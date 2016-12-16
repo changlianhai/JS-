@@ -1,0 +1,18 @@
+
+
+  document.getElementsById()
+  document/context.getElementsByTagName()
+  document/context.getElementsByName()
+
+  document.querySelector()
+  document.querySelectorAll()
+
+  document.getElementsByClassName()
+
+  document.documentElement
+  document.head
+  document.body
+
+
+
+  document.body.clientWidth || document.documentElement.clientWidth

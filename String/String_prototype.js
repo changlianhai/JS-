@@ -53,3 +53,33 @@ if (typeof String.prototype.rtirm !== 'function') {
         return this.replace(/(\s*$)/g, "");
     };
 }
+
+/**
+ * mostCharacter: 找出字符串中出现次数最多的字符，并且统计出现的次数，返回次数和该字符
+ * @returns {{count: number, maxChar: string}}
+ */
+String.prototype.mostChar = function () {
+    var obj = new Object;
+    var maxChar = '', count = 0;
+    for (var i = 0, len = this.length; i < len; i++) {
+        var cur = this.charAt(i);
+        if (obj[cur]) {
+            obj[cur]++;
+        } else {
+            obj[cur] = 1;
+        }
+    }
+
+    for (var key in obj) {
+        if (obj[key] > count) {
+            count = obj[key];
+            maxChar = key;
+        }
+    }
+
+    return {
+        count: count,
+        maxChar: maxChar
+    };
+
+};
