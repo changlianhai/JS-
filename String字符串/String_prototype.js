@@ -2,6 +2,34 @@
  * Created by  常连海 on 2016/12/16.
  */
 
+
+/**
+ *  forEach:遍历字符串 ,如果一个参数，默认遍历这个字符串，如果传入俩个参数，第二个参数是'ASCII'，那么遍历对应索引字符的ASCII码
+ * @param callback {{function}}
+ */
+String.prototype.forEach = function (callback) {
+    if(typeof callback ==='function') {
+        if(arguments.length===1) {
+            for(var i= 0,len=this.length;i<len;i++) {
+                callback(this.charAt(i),i,this);
+            }
+        }
+
+        if(arguments.length===2 && arguments[1] === 'ASCII') {    //如果第二个值是'ASCII'
+            for(var i= 0,len=this.length;i<len;i++) {
+                callback(this.charCodeAt(i),i,this);
+            }
+        }
+    }
+};
+
+/**
+ * clone:克隆当前字符串
+ * @returns {string}
+ */
+String.prototype.clone = function () {
+   return this.slice(0); //this.slice()
+};
 /**
  * toChangeObj: 将制定的URL参数转为对象
  * @returns {*}
