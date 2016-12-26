@@ -1,0 +1,36 @@
+ << boolean >>:布尔值
+ 1)
+      -->> ! 一个感叹号是取反，首先转为布尔值，在进行取反
+        console.log(!3);  false
+      -->> !! 将其他数据类型转为boolean类型，相当于函数Boolean()
+        console.log(!!'珠峰培训'); console.log(!![]); false
+        !! ====>> Boolean()
+
+ 2) 数据类型转换规则：
+    A): 如果只有一个值，记住以下规则
+      0、 NaN 、 null、 undefined、''(空串)、 false 他们转换布尔值为false,其他都为true
+      注: [] {} ' '为true，存储地址
+
+    B): 如果俩个等号做比较，遵循以下规则 （隐试转换，不安全）
+      ===>> val1 == val2
+     (1) 对象 == 对象  永远不相等，俩个地址不相等
+     (2) 对象 == 字符串 对象调用toString(),转为字符串，在进行字符比较  [] == '' 首先[].toString()=>> ''  ''== ''
+            [].toString() -->> ""   {}.toString() --->> "[object Object]"
+     (3)  对象 == 布尔值         都专为数字进行比较    对象.toString().Number()    Number(布尔值) true-->> 1 false--->>  0
+     (4)  对象 == 数字           对象转为数字进行比较  对象.toString().Number()
+     (5)  数字 == 布尔值         布尔值转为对象进行比较    0==true   2 == false  ![] == []
+     (6)  数字 == 字符串         字符串转为数字     Number(字符串)       2== "2" true
+     (7)  null == undefined      true     null、undefined 和其他比较都不进行转换，因为他们没有toString()方法来转为串  0 == null
+     (8)  NaN  == NaN            false    NaN和任何值比较都返回false
+
+     eg:
+       0 == true     [] == ''   [] == 0   ![] == []  ({}) == ({})   [] == []
+       NaN == NaN    null == 0  undefined == false
+
+    C): 三个等号做比较  (最安全，没有隐试转换)
+       ===>> val1 === val2  值和引用地址必须相同才返回true
+      eg:
+       2 === '2'   false === '0'
+
+
+

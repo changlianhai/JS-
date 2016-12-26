@@ -1,5 +1,7 @@
 
-基本数据类型:<<number>>
+基本数据类型: number、string、boolean、null、undefined
+引用数据类型: object、function
+           --------------->>         <<number>>      <<---------------
  number类型： 正数、负数、0、小数、NaN、 Infinity 、 -Infinity
  1) NaN
  -->> NaN (Not a Number) 不是一个有效的数字字符，但是他属于number类型 console.log(typeof NaN)--->> 'number'
@@ -62,6 +64,22 @@
   转换：Number()   parseInt()  parseFloat()  toString()
   保留小数点： toFixed()
   判断： isNaN()
+
+  面试题：
+ 1)
+   var num = Number('12px');
+   if(num==12) {
+     console.log(12);
+   }else if(num==NaN) {
+      console.log(NaN);
+   }else {
+      console.log('以上答案都不对'); //-->> 输出以上答案都不对
+   }
+
+    var num = Number('12px');//--->>改为 var num = parseInt('12px');结果是多少呢？
+
+
+
 
 
 
