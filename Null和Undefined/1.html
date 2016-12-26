@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+null类型： 空指正引用
+作用：释放引用内存
+1) 数据类型为 object console.log(typeof null) --->> "object"
+2) null不是object的实例 console.log(null instanceof Object) --->> false
+3) 用Number()转为数字为0
+4) 用来取消内存引用，释放内存 对象 = null 断开连
+5)找不到DOM元素返回null
+
+undefined类型：
+undefined只有一个值，那就是undefined
+1)undefined数据类型为undefined console.log(typeof undefined) --->> "undefined"
+2) 用Number()转为NaN
+3)出现undefined的情况
+A: 对象没有的属性和方法返回undefined var obj = {} console.log(obj.name) ==>> "undefined"
+B: 变量声明没有赋值默认为undefined var a; console.log(a) ==>> "undefined"
+C: 没有声明的变量直接使用typeof检测数据类型返回undefiend typeof x =>> "undefined"
+<script type="text/javascript">
+    var s = null instanceof  Object;
+    console.log(s);
+
+
+    console.log(Number(null), Number(undefined));
+    console.log(typeof null,typeof undefined);
+
+
+    var x;
+    console.log(x);
+    console.log(typeof age)
+</script>
+</body>
+</html>

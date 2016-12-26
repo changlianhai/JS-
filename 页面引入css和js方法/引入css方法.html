@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .two {
+            background: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="css.css" type="text/css" charset="utf-8"/>
+</head>
+<body>
+
+    引入css方法：
+    1)行内式  style
+    2)内嵌式  style标签      最高！import
+    3)外联式  link
+    4 导入式  style标签，里面采用@import
+
+    面试题：
+     link和@import的区别？
+      1)  link属于xhtml的标签，而@import是css2.1提供的，有兼容性 ie5-不兼容
+      2)  样式加载顺序问题  link先加载样式，后加载结构， 而@import是相反的
+      3)  DOM控制问题  link可以控制， 而@import不可以控制
+      4)
+<div style="background: red">div1</div>
+<div class="two">div2</div>
+<div class="three">div3</div>
+</body>
+</html>
