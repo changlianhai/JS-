@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            background: gold;
+            text-align: center;;
+            color: #fff;
+            font-size: 40px;
+            letter-spacing: 20px;
+        }
+
+        #getRandom {
+            display: block;
+            width: 130px;
+            height: 40px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button id="getRandom">获取验证码</button>
+<script type="text/javascript">
+
+    //1.随机生成四位不重复的0-9之间的整数，放入一个数组中
+    // 面向过程方法
+    //   document.getElementById('getRandom').onclick = function () {
+    //      getRandom(this)
+    //   };
+    //
+    //    function getRandom(that) {
+    //        var _this = that;
+    //        var n = 4;
+    //        var ary = new Array;
+    //        for (var i = 0; i < 4; i++) {
+    //            var val = Math.round(Math.random()*9);
+    //            ary.indexOf(val) === -1 ? ary[ary.length] = val : i--;
+    //
+    //        }
+    //        document.getElementById('box').innerHTML = ary.join('');
+    //        var timer = window.setInterval(function () {
+    //            if(Number(_this.innerHTML)===0) {
+    //                window.clearInterval(timer);
+    //                _this.disabled =false;
+    //                _this.innerHTML = '重新获取验证码~~~';
+    //                _this.onclick = function () {    //倒计时时候走完，再次点击获取验证码
+    //                    getRandom(this)
+    //                }
+    //
+    //            }else {
+    //                _this.onclick = null;  //倒计时时候，按钮是不能再次点击的
+    //                _this.disabled =true;
+    //                _this.innerHTML = n--;
+    //            }
+    //        },1000)
+    //    }
+    //
+
+    //面向对象方法封装
+    function GetCode(performer, showEle) {
+        GetCode.prototype.tiggerClik(performer, showEle);
+    }
+    GetCode.prototype.tiggerClik = function (performer, showEle) {
+        performer.onclick = function () {
+            var n = 10;
+            var timer = window.setInterval(function () {
+                if (n === 0) {
+                    window.clearInterval(timer);
+                    performer.disabled = false;
+                    performer.innerHTML = '请重新获取验证码~~';
+                    new GetCode(performer, showEle);
+
+
+                } else {
+                    performer.onclick = null;
+                    performer.innerHTML = n--;
+                    performer.disabled = true;
+                }
+
+                showEle.innerHTML = yzm;
+            }, 1000);
+            var yzm = GetCode.prototype.getRandom();
+        }
+    };
+    GetCode.prototype.getRandom = function () {
+        var str = '';
+        for (var i = 0; i <= 3; i++) {
+            var val = Math.round(Math.random() * 9).toString();
+            str.indexOf(val) === -1 ? str += val : i--;
+        }
+        return str;
+    };
+    new GetCode(document.getElementById('getRandom'), document.getElementById('box'));
+    //  new GetCode('点击谁','在哪个元素上显示');
+
+</script>
+</body>
+</html>

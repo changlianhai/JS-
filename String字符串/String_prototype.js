@@ -8,16 +8,16 @@
  * @param callback {{function}}
  */
 String.prototype.forEach = function (callback) {
-    if(typeof callback ==='function') {
-        if(arguments.length===1) {
-            for(var i= 0,len=this.length;i<len;i++) {
-                callback(this.charAt(i),i,this);
+    if (typeof callback === 'function') {
+        if (arguments.length === 1) {
+            for (var i = 0, len = this.length; i < len; i++) {
+                callback(this.charAt(i), i, this);
             }
         }
 
-        if(arguments.length===2 && arguments[1] === 'ASCII') {    //如果第二个值是'ASCII'
-            for(var i= 0,len=this.length;i<len;i++) {
-                callback(this.charCodeAt(i),i,this);
+        if (arguments.length === 2 && arguments[1] === 'ASCII') {    //如果第二个值是'ASCII'
+            for (var i = 0, len = this.length; i < len; i++) {
+                callback(this.charCodeAt(i), i, this);
             }
         }
     }
@@ -28,13 +28,13 @@ String.prototype.forEach = function (callback) {
  * @returns {string}
  */
 String.prototype.clone = function () {
-   return this.slice(0); //this.slice()
+    return this.slice(0); //this.slice()
 };
 /**
  * toChangeObj: 将制定的URL参数转为对象
  * @returns {*}
  */
-String.prototype.toChangeObj = function () {
+String.prototype.formatUrl = function () {
     if (arguments[0] === true) {     //如果传入的是第一个参数是true,格式化URL地址
         var obj = new Object;
         var str = this.slice(this.indexOf('?') + 1);
@@ -91,11 +91,7 @@ String.prototype.mostChar = function () {
     var maxChar = '', count = 0;
     for (var i = 0, len = this.length; i < len; i++) {
         var cur = this.charAt(i);
-        if (obj[cur]) {
-            obj[cur]++;
-        } else {
-            obj[cur] = 1;
-        }
+        obj[cur] ? obj[cur]++ : obj[cur] = 1;
     }
 
     for (var key in obj) {
@@ -110,4 +106,12 @@ String.prototype.mostChar = function () {
         maxChar: maxChar
     };
 
+};
+
+/**
+ * zero: 日期补位，不足前面补0
+ * @returns {string}
+ */
+String.prototype.zero = function () {
+    return this.length >=2 ?  this: '0' + this;
 };

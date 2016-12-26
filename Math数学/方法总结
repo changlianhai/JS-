@@ -1,0 +1,32 @@
+
+单利模式封装Math类
+--->> Math.abs()    绝对值
+--->> Math.ceil()   向上取整   Math.ceil(12.4) 13  Math.ceil(-10.4) -10
+--->> Math.floor()  向下取整
+--->> Math.round()  四舍五入
+--->> Math.min()    最小值
+--->> Math.max()    最大值
+--->> Math.random() 随机数 [0,1)
+
+获取[n,m]之间的随机整数
+  Math.round(Math.random()*(m-n)+n);
+
+
+案例：封装一个函数，作用是返回n-m之间的任意整数
+ function random(n,m) {
+   n = Number(n),m = Number(m) //--->>不管传入进来什么，强制转换一下，俩种情况，
+   if(isNaN(n) || isNaN(m)) {  //如果又一个不是数字，返回0-1随机数
+        return Math.random();
+   }
+
+   if(n>m) {    //如果n>m，换位置
+      var temp = n;
+      n = m;
+      m = temp;
+   }
+
+   return Math.round(Math.random()*(m-n)+n);
+ }
+
+
+

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>案例练习</title>
+</head>
+<body>
+<div id="box"></div>
+<script src="String_prototype.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+    //案例1:  将'2016-12-6 12:54:3' 转为 '2016年12月26日 12时54分30秒'
+
+    var str = '2016-12-6 12:54:3';
+    var ary = str.split(' ');
+    var aryLeft = ary[0].split('-');
+    var aryRight = ary[1].split(':');
+     var s = aryLeft[0]+'年' + aryLeft[1].zero()+'月'+  aryLeft[2].zero() +'日';
+     s +=  aryLeft[0].zero() + '时' +  aryLeft[1].zero() +'分' +  aryLeft[2].zero() +'秒';
+    document.getElementById('box').innerHTML = s;
+
+
+
+
+
+
+</script>
+</body>
+</html>
