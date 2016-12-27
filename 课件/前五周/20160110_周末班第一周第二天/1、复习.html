@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    var num = 2;//4 //8
+    var obj = {
+        num: 4, //8
+        fn: (function () {
+            this.num *= 2;
+            num =num * 2;
+            var num = 3; //3 //9   //27
+            return function () {
+                this.num *= 2;//window.num *=2 //obj.num *=2
+                num *= 3;
+                console.log(num); //9 27
+            }
+        })()
+    };
+    var fn = obj.fn;
+    fn();
+    obj.fn();
+    console.log(window.num, obj.num); //4 8
+
+
+
+    function fun03() {
+        var a  = 10;
+        return function () {
+            a*=2;
+            return a;
+        }
+    }
+    var f = fun03();
+    f();
+    var x = f();
+    console.log(x);
+    var g= fun03();
+    var y = g();
+    console.log(y);
+
+
+    var x1 = function () {
+        var a = 1;
+        return function () {
+            return ++a;
+        }
+    }();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>div</div>
+<h1>H1</h1>
+
+<h2>h2</h2>
+<script>
+    var tool = {
+        getIndex: function (ele) {
+            var n = 0;
+            var pre = ele.previousSibling;
+            while (pre) {
+                if (pre.nodeType === 1) {
+                    n++;
+                }
+                pre = pre.previousSibling;
+            }
+            return n;
+        }
+
+    };
+    var oH2 = document.getElementsByTagName("h2").item(0);
+    console.log(tool.getIndex(oH2));
+    /*
+     * 低耦合高内聚：减少页面的用于代码，提高代码的重复使用率
+     *
+     *
+     * */
+    function createPerson(name, age) {
+        var obj = new Object;
+        obj.name = name;
+        obj.age = age;
+        obj.writeJS = function () {
+            console.log("wirteJS");
+        };
+        return obj;
+    }
+
+    var person1 = createPerson("常连海", 23);
+    var person2 = createPerson("王东", 24);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    function A() {
+        this.x = 10;
+    }
+    A.prototype.aa = function () {
+        alert("ok");
+    };
+
+    function B() {
+
+        A.call(this);
+    }
+    B.prototype.aa = function () {
+
+    };
+
+    var b1 = new B;
+
+
+    function fn() {
+        console.log(this);
+    }
+    var obj = {
+        fn: fn
+    };
+
+    fn();
+    obj.fn();
+
+    var ary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    alert(Math.max.apply(1, ary));
+    (23).toFixed()
+</script>
+</body>
+</html>

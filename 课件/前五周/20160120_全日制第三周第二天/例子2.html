@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            display: block;
+            margin-top: 150px;
+
+        }
+    </style>
+</head>
+<body>
+<p>1</p>
+
+<p>2</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<p>3</p>
+
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+<img realImg="http://s9.sinaimg.cn/middle/c206a2c3ge040ee21ab28&690" src="aa.jpg"/>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+<script>
+    //懒加载  延迟加载 的意义  提升服务器性能，优化网站
+    //http://www.popoho.com/d/file/wmmm/20160221/16_132419_8.jpg
+    /* var oImg = document.images;
+     for(var i=0;i<oImg.length;i++) {
+     oImg[i].b = oImg[i].offsetTop + oImg[i].offsetHeight;
+     }
+     window.onscroll = function () {
+     var h = document.documentElement.scrollTop || document.body.scrollTop;
+     var ch = document.documentElement.clientHeight || document.body.clientHeight;
+     for(var i=0;i<oImg.length;i++) {
+     if(h + ch >oImg[i].b) {
+     var realSrc = oImg[i].getAttribute("realImg");
+     oImg[i].src= realSrc + "?"+Math.random();
+     }
+     }
+     }*/
+
+
+    var oImg = document.images;
+    for (var i = 0; i < oImg.length; i++) {
+        oImg[i].b = oImg[i].offsetTop + oImg[i].offsetHeight;
+    }
+    window.onscroll = function () {
+        var h = document.documentElement.scrollTop || document.body.scrollTop;
+        var ch = document.documentElement.clientHeight || document.body.clientHeight;
+        for (var i = 0; i < oImg.length; i++) {
+            ;(function (i) {
+                if(oImg.flag){//重复的加载，用户体验差
+                    return; //放在
+                }
+                if (h + ch > oImg[i].b) {
+                    var realSrc = oImg[i].getAttribute("realImg") + "?" + Math.random();
+                    oImg[i].src = "cc.gif";
+                    var temp = new Image; // temp = document.createElement("img");
+                    temp.src = realSrc;
+                    temp.onload = function () {
+                        oImg[i].src = realSrc;
+                        //加入一个标示，用来判断是否已经加载完毕
+                        oImg.flag = true;
+                    }
+                }
+            })(i);
+        }  
+    }
+
+</script>
+</body>
+</html>
