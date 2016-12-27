@@ -1,0 +1,103 @@
+
+<<  function >> 引用数据类型
+
+1.function:函数 -->> 具备某个功能的一个方法，方法是本身，没有什么意义，只有这个方法执行了，对应的功能才能实现自己的价值
+2.创建函数：
+
+    function 函数名(形参1,形参2,....) {
+        函数体
+    }
+
+   函数名;    //-->>代表函数本身
+   函数名();  //-->>执行这个函数
+
+   ---->>函数创建的步奏：
+     1) 首先开辟一个新的内存空间，浏览器为其分配一个十六进制内存地址A
+     2) 把函数中的代码当作字符串存储到这个内存空间中 A
+     3) 把这个内存空间地址A赋给我们的函数名(sum = A);
+
+   ---->> 函数执行的步奏
+    1) 函数执行，形成一个新的私有作用域
+    2) 形参赋值
+    3) 预解释
+    4) 把函数题中的代码字符串当作JS代码重上到下执行
+
+    function sum(num1,num2) {
+      var total = null;
+      total = num1 + num2;
+      console.log(total);  //------>> 30
+    }
+
+    sum(10,20);
+
+    //闭包：
+       函数执行形成一个新的私有作用域，保护里面的变量和外面的不受干扰，我们把这种机制称之为"闭包"
+
+   3): 形参
+       function fn(a,b) {    //--->> a,b是形参，默认如果不传默认值是undefined
+         console.log(a,b);
+       }
+       fn(10,20);
+
+   4): 函数返回值
+        作用： 将结果返回到外面，外面接收使用
+        function fn(n,m) {
+            var total = null;
+            total = n+m;
+            return total;
+        }
+
+        var sum = fn(10,20);
+        console.log(sum);  //--->>30
+       注意：
+         A: 如果没有return，或者return;，都会返回undefined
+         B: **函数里面return后面的代码不会执行
+
+      eg1:
+         function fn1() {
+            console.log("OK");
+         }
+         console.log(fn1()); //--->> undefined
+
+      eg2:
+         function fn2() {
+          var total = 2;
+           return;
+           console.log(total); //--->>return后面的代码不执行
+         }
+
+         console.log(fn2()); //--->> undefined
+
+      eg3:
+         function fn3() {
+            if(arguments.length===0) return 0;
+            if(arguments.length===1) return 1;
+            if(arguments.length===2) return 2;
+         }
+         console.log(fn3());
+         console.log(fn3(1));
+         console.log(fn3(1,2));
+
+
+   5): arguments对象
+       arguments：函数天生自带的(无论是否有形参，无论是否传值，arguments都是存在的)，用来接收函数传递进来的参数，是一个类数组
+       arguments是对象类型数据的 console.log(typeof arguments) --->> "object"
+
+     ===>>  ***callee 、 call、 caller三个的区别？
+
+   6):匿名函数
+      在JS中有两种匿名函数：
+      A:自执行函数  [ 定义函数和函数执行一起完成了 ]
+         格式：
+            ~function(){}();
+            +function(){}();
+            !function(){}();
+            -function(){}();
+            ;(function(){})()
+            ;(function(){}());
+      B:函数表达式 把函数定义的部分当作一个值赋给某一个变量或者元素的某一个事件
+         var oDiv = document.getElementById("box");
+         oDiv.onclick = function() {};
+
+
+         var fn1 = function() {};

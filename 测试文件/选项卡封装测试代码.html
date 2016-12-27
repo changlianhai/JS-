@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, html, ul, li, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            margin: 10px auto;
+            width: 400px;
+            height: 300px;
+            border: 1px solid blue;
+        }
+
+        li {
+            float: left;
+            width: 120px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: #fff;
+            background: gold;
+            margin-left: 2px;
+            list-style-type: none;
+            cursor: pointer;
+
+        }
+
+        .one {
+            margin-left: 0;
+        }
+
+        ul li.current {
+            background: blue;
+        }
+
+        #box > div {
+            display: none;
+            clear: both;
+            width: 100%;
+            height: 265px;
+            background: palegoldenrod;
+        }
+
+        #box > div.current {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li class="one current">1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="current">div1</div>
+    <div>div2</div>
+    <div>div3</div>
+</div>
+<script type="text/javascript">
+    function Tabs(ele) {
+        Tabs.prototype.tiggerClik(ele)
+    }
+    Tabs.prototype.tiggerClik = function (ele) {
+        var oLis = ele.getElementsByTagName('li');
+        var oDivs = ele.getElementsByTagName('div');
+        for (var i = 0, len = oLis.length; i < len; i++) {
+            oLis[i].index = i;
+            oLis[i].onclick = function () {
+                for(var j=0;j<oLis.length;j++) {
+                    oLis[j].className = null;
+                    oDivs[j].className = null;
+                }
+
+                this.className = 'current';
+                oDivs[this.index].className='current';
+            }
+
+
+        }
+    };
+
+    new Tabs(document.getElementById('box'));
+
+
+</script>
+</body>
+</html>
